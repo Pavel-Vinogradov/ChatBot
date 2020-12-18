@@ -1,6 +1,7 @@
 <?php
 
-class Bot{
+class Bot
+{
     /**
      * @return string - bot handler url.
      *
@@ -9,6 +10,11 @@ class Bot{
     public static function buildHandlerBackupUrl()
     {
         return ($_SERVER['SERVER_PORT'] == 443 || $_SERVER["HTTPS"] == "on" ? 'https' : 'http') . "://" . $_SERVER['SERVER_NAME'] . (in_array($_SERVER['SERVER_PORT'], array(80, 443)) ? '' : ':' . $_SERVER['SERVER_PORT']) . $_SERVER['SCRIPT_NAME'];
+
+    }
+
+    public static function installBot()
+    {
 
     }
 }
