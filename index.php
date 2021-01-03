@@ -1,4 +1,29 @@
 <?php
+// подключение
+use lib\Log;
+use lib\Rest;
+use lib\Bot;
+use lib\BotCommand;
+
+use lib\Application;
+
+require_once('lib/autoloader.php');
+require_once('lib/application.php');
+
+
+
+// запуск
+$application = new Application();
+$application->run();
+
+
+
+// отслеживание  ошибки
+try {
+    Log::deleteOldFiles(7, $_REQUEST['auth']['domain']);
+} catch (Exception $e) {
+    Log::add($e->getMessage(), $_REQUEST['auth']['domain']);
+}
 
 switch (strtoupper($_REQUEST['event'])) {
 
